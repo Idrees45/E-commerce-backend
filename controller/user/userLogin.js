@@ -28,7 +28,7 @@ const userLogin= async(req,res)=>{
   httpOnly: true,
   secure: true, // ensures cookies are only sent over HTTPS
   sameSite: 'None' // must be 'None' if frontend and backend are on different domains
-  path: "/"    
+  // path: "/"    
 };
 
 res.cookie("token", token, tokenOptions).json({
