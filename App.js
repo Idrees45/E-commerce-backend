@@ -3,19 +3,11 @@ const cors= require("cors")
 require("dotenv").config()
 const app= express()
 const bodyParser = require('body-parser');
-// app.use(cors({
-//    origin: 'https://dailyloot.vercel.app',
-//     credentials:true
-// }))
-const corsOptions = {
-  origin: "https://dailyloot.vercel.app", // ✅ your frontend URL
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ support all needed methods
-  allowedHeaders: ["Content-Type", "Authorization"] // ✅ allow headers you're using
-};
+app.use(cors({
+   origin: 'https://dailyloot.vercel.app',
+    credentials:true
+}))
 
-// ✅ Apply CORS before everything else
-app.use(cors(corsOptions));
 
 // ✅ Handle preflight requests
 app.options("*", cors(corsOptions));
