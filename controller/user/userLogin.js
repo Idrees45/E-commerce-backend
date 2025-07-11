@@ -23,16 +23,20 @@ const userLogin= async(req,res)=>{
                 email:user.email
             }
           const token=   jwt.sign(tokenData,process.env.TOKEN_SECRET_KEY,{ expiresIn: '9h' })
-          const tokenoption= {
-            httpOnly:true,
-            secure:true
-          }
-          res.cookie("token",token).json({
-            message:"Login successfully",
-            data:token,
-            success:true,
-            error:false
-          })
+       
+            const tokenOptions = {
+  httpOnly: true,
+  secure: true, // ensures cookies are only sent over HTTPS
+  sameSite: 'None' // must be 'None' if frontend and backend are on different domains
+};
+
+res.cookie("token", token, tokenOptions).json({
+  message: "Login successfully",
+  data: token,
+  success: true,
+  error: false
+});
+
         }else{
             throw new Error("Password does not match")
         }
