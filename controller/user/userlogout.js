@@ -19,4 +19,3 @@ const userlogout= async(req,res)=>{
     }
 }
 module.exports =userlogout
-
