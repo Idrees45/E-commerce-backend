@@ -4,11 +4,11 @@ require("dotenv").config()
 const app= express()
 const bodyParser = require('body-parser');
 app.use(cors({
-    origin:process.env.FRONTEND_URL,
+    origin:'https://dailyloot.vercel.app/',
     credentials:true
 }))
 app.use(express.json())
-const port = process.env.PORT || 8080;
+const port = 'https://dailyloot.vercel.app/';
 const connectDB=require("./config/db")
 const router=require("./routes/index")
 const cookieParser = require('cookie-parser')
