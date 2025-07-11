@@ -20,13 +20,14 @@
 // }
 // module.exports =userlogout
 
-
 const userlogout = async (req, res) => {
   try {
     res.clearCookie("token", {
       httpOnly: true,
       secure: true,
-      sameSite: "None"
+      sameSite: "None",
+      path: "/",              // ✅ Important: match the cookie path used on login
+      expires: new Date(0)    // ✅ Force expiry to ensure deletion
     });
 
     res.json({
@@ -43,4 +44,6 @@ const userlogout = async (req, res) => {
     });
   }
 };
-module.exports =userlogout
+
+module.exports = userlogout;
+
